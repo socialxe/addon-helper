@@ -1,5 +1,5 @@
 <?php
-	if(!defined("__ZBXE__")) exit();
+	if(!defined('__ZBXE__') && !defined('__XE__')) exit();
 
 	Context::loadLang('./addons/socialxe_helper/lang');
 

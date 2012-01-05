@@ -18,12 +18,20 @@
 
 		// 자신이라면 설정 추가
 		if ($logged_info->member_srl == $member_srl){
-			$oMemberController->addMemberPopupMenu(getUrl('', 'mid', $mid, 'act', 'dispSocialxeSocialInfo'), 'cmd_config_social', './modules/member/tpl/images/icon_view_info.gif', 'self');
+			if(defined('__XE__')) {
+				$oMemberController->addMemberPopupMenu(getUrl('', 'mid', $mid, 'act', 'dispSocialxeSocialInfo'), 'cmd_config_social', '', 'self');
+			} else {
+				$oMemberController->addMemberPopupMenu(getUrl('', 'mid', $mid, 'act', 'dispSocialxeSocialInfo'), 'cmd_config_social', './modules/member/tpl/images/icon_view_info.gif', 'self');
+			}
 		}
 
 		// 다른 사람이면 보기 추가
 		else{
-			$oMemberController->addMemberPopupMenu(getUrl('', 'mid', $mid, 'act', 'dispSocialxeSocialInfo', 'member_srl', $member_srl), 'cmd_view_social_info', './modules/member/tpl/images/icon_view_info.gif', 'self');
+			if(defined('__XE__')) {
+				$oMemberController->addMemberPopupMenu(getUrl('', 'mid', $mid, 'act', 'dispSocialxeSocialInfo', 'member_srl', $member_srl), 'cmd_view_social_info', '', 'self');
+			} else {
+				$oMemberController->addMemberPopupMenu(getUrl('', 'mid', $mid, 'act', 'dispSocialxeSocialInfo', 'member_srl', $member_srl), 'cmd_view_social_info', './modules/member/tpl/images/icon_view_info.gif', 'self');
+			}
 		}
 	}
 

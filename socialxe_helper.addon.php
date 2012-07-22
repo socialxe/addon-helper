@@ -173,7 +173,7 @@
 		}
 
 		// If module_info is not set still, and $module does not exist, find the default module
-		if(!$module_info && !$this->module) $module_info = $site_module_info;
+		if(!$module_info && !$this->module && !$this->mid) $module_info = $site_module_info;
 
 		if(!$module_info && !$this->module && $site_module_info->module_site_srl) $module_info = $site_module_info;
 
@@ -208,7 +208,11 @@
 		$this->module_info->mid = $this->mid;
 
 		// Still no module? it's an error
-		if(!$this->module) $this->error = 'msg_module_is_not_exists';
+        if(!$this->module)
+		{
+			$this->error = 'msg_module_is_not_exists';
+			$this->httpStatusCode = '404';
+		}
 
 		// If mid exists, set mid into context
 		if($this->mid) Context::set('mid', $this->mid, true);
